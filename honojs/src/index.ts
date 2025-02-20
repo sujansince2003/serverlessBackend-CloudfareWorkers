@@ -1,12 +1,27 @@
 import { Hono } from 'hono'
 
 const app = new Hono()
-
+//middleware
+app.use(async (c, next) => {
+  const token = c.req.header("Authorization")
+  if (!token) {
+    return c.json({ error: "Invalid token" })
+  }
+  else {
+    return next()
+  }
+})
 app.get('/', (c) => {
   return c.json({
     message: 'Hello World',
   })
 })
+
+
+
+
+
+
 
 
 
