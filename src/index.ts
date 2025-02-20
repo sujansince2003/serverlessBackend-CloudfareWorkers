@@ -13,6 +13,6 @@
 
 export default {
 	async fetch(request, env, ctx): Promise<Response> {
-		return new Response('Hello World!');
+		return Response.json({ msg: "This is my first cloudfare worker app" })
 	},
 } satisfies ExportedHandler<Env>;
